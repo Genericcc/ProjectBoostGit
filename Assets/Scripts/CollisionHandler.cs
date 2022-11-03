@@ -19,22 +19,18 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void Update() {
-        CheatHandler();
-        SkipLevel();
+        KeyPressesHandler();
     }
-
-    void CheatHandler() {
+    
+    void KeyPressesHandler() {
         if(Input.GetKeyDown(KeyCode.C)) {
             cheatOn = !cheatOn;
             Debug.Log("Cheats are: " + cheatOn);
         }
-    }  
-
-    void SkipLevel() {
-        if(Input.GetKeyDown(KeyCode.L)) {
+        else if (Input.GetKeyDown(KeyCode.L)) {
             StartSuccessSequence();
         }
-    }    
+    }  
 
     void OnCollisionEnter(Collision other) {
         if (isTransitioning || cheatOn) { return; }
